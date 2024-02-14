@@ -9,6 +9,6 @@ from src.exercises.misc.minimum_by_column import example_column_minimums
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
     print_hi('PyCharm')
-    print(list(example_column_minimums()))
+    print(list(map(lambda v: list(v), example_column_minimums())))
 
 # See PyCharm help at https://www.jetbrains.com/help/pycharm/

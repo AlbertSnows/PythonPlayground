@@ -17,11 +17,17 @@ def rows_with_column_minimum(table, column_name, minimum_for_column):
 
 
 def minimum_rows_for_key(table, column_name):
-    return rows_with_column_minimum(table, column_name, minimum_value_for_column(table, column_name))
+    """
+    :param table: [{...}, ...]
+    :param column_name: [...]
+    :return: filter obj
+    """
+    filtered_rows = rows_with_column_minimum(table, column_name, minimum_value_for_column(table, column_name))
+    return filtered_rows
 
 
 def random_minimum_row_for_column(table, column_name):
-    return first(minimum_rows_for_key(table, column_name))
+    return first(list(minimum_rows_for_key(table, column_name)))
 
 
 #
@@ -33,14 +39,15 @@ def minimum_row_for_columns(table, columns):
     """
     return reduce_while(
         lambda remaining_rows, _: len(remaining_rows) > 1,
-        minimum_rows_for_key,
+        lambda remaining_rows, column_name: list(minimum_rows_for_key(remaining_rows, column_name)),
         rest(columns),
-        minimum_rows_for_key(table, first(columns)))
+        list(minimum_rows_for_key(table, first(columns))))
 
 
 sd_3 = [{"a": 1, "b": 2},
         {"a": 1, "b": 3},
         {"a": 1, "b": 4}]
+
 
 def example_column_minimums():
     first_example = map(
