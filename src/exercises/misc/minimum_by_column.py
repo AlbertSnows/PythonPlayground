@@ -1,6 +1,7 @@
 from functools import reduce
 from src.lib.collections import first, rest
 from src.lib.functions import reduce_while
+from pyrsistent import v
 
 sample_data_1 = [{"a": 1, "b": 0, "c": 0, "d": 0},
                  {"a": 0, "b": 2, "c": 3, "d": 0},
@@ -27,10 +28,12 @@ def minimum_rows_for_key(table, column_name):
 
 
 def random_minimum_row_for_column(table, column_name):
-    return first(list(minimum_rows_for_key(table, column_name)))
+    return first(v(minimum_rows_for_key(table, column_name)))
 
 
-#
+
+
+
 def minimum_row_for_columns(table, columns):
     """
     given a set of rows T and columns [a, b, c, ...]
@@ -50,8 +53,9 @@ sd_3 = [{"a": 1, "b": 2},
 
 
 def example_column_minimums():
-    first_example = map(
-        lambda sample_data: random_minimum_row_for_column(sample_data, "a"),
-        [sample_data_1, sd_2])
-    second_example = map(lambda table: minimum_row_for_columns(table, ["a", "b"]), [sd_3])
+    first_example = list(map(
+        lambda sample_data: list(random_minimum_row_for_column(sample_data, "a")),
+        [sample_data_1, sd_2]))
+    second_example = minimum_row_for_columns(sd_3, ["a", "b"])
+    # map(lambda table: , [sd_3])
     return [first_example, second_example]
