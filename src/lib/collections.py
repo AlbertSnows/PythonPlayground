@@ -7,3 +7,9 @@ def nth(arr, index):
 
 def first(arr):
     return nth(arr, 0)
+
+
+def rest(seq):
+    if len(seq) <= 1:
+        return []
+    return seq[1:]
