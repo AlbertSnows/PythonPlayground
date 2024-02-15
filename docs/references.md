@@ -4,4 +4,4 @@ to stuff
 
 ## Libraries
 
-pyrsistent, expression
+pyrsistent, expression, pydantic (not usable here me thinks)
