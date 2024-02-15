@@ -2,6 +2,7 @@ from functools import reduce
 from src.lib.collections import first, rest
 from src.lib.functions import reduce_while
 from pyrsistent import v
+from expression import pipe
 
 sample_data_1 = [{"a": 1, "b": 0, "c": 0, "d": 0},
                  {"a": 0, "b": 2, "c": 3, "d": 0},
@@ -23,15 +24,13 @@ def minimum_rows_for_key(table, column_name):
     :param column_name: [...]
     :return: filter obj
     """
-    filtered_rows = rows_with_column_minimum(table, column_name, minimum_value_for_column(table, column_name))
-    return filtered_rows
+    return pipe(
+        minimum_value_for_column(table, column_name),
+        lambda min_value: rows_with_column_minimum(table, column_name, min_value))
 
 
 def random_minimum_row_for_column(table, column_name):
-    return first(v(minimum_rows_for_key(table, column_name)))
-
-
-
+    return pipe(minimum_rows_for_key(table, column_name), v, first)
 
 
 def minimum_row_for_columns(table, columns):
