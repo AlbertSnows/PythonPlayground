@@ -1,6 +1,11 @@
 from functools import reduce
 from itertools import takewhile
 
+def attempt(action, failure):
+    try:
+        return action()
+    except Exception:
+        return failure
 
 def reduce_while(condition, reducer, iterable, initial):
     """
