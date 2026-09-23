@@ -32,15 +32,38 @@ Explanation: Rob house 1 (money = 2), rob house 3 (money = 9) and rob
 house 5 (money = 1).
 Total amount you can rob = 2 + 9 + 1 = 12.
 
- 
+Example 3:
+
+Input: nums = [2,1,8,12,3]
+Output: 14
+Explanation: 2, 12
+
+
 
 Constraints:
 
-	• 1 <= nums.length <= 100
+    • 1 <= nums.length <= 100
 
-	• 0 <= nums[i] <= 400
+    • 0 <= nums[i] <= 400
 """
 
 class Solution:
     def rob(self, nums: list[int]) -> int:
+        # 2, 2, 10, 14, 13
+        start = 2
+        max_value_at_index = [nums[0], max(nums[0], nums[1])]
+        for index in range(start, len(nums) - 1):
+            value_at_index = nums[index]
+            previous_max_location = index - 2
+            previous_max = max_value_at_index[previous_max_location]
+            new_possible_max = previous_max + value_at_index
+            max_value_at_index[index] = new_possible_max
+
+        end = len(nums) - 1
+        return max_value_at_index[end]
         
+if __name__ == "__main__":
+    sol = Solution()
+    print(sol.rob([1, 2, 3, 1])) # 4
+    print(sol.rob([2, 7, 9, 3, 1])) # 12
+    
