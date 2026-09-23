@@ -58,16 +58,16 @@ and startsWith.
 class Trie:
 
     def __init__(self):
-        
+        pass
 
     def insert(self, word: str) -> None:
-        
+        pass
 
     def search(self, word: str) -> bool:
-        
+        pass
 
     def startsWith(self, prefix: str) -> bool:
-        
+        pass
 
 
 # Your Trie object will be instantiated and called as such:
@@ -75,3 +75,19 @@ class Trie:
 # obj.insert(word)
 # param_2 = obj.search(word)
 # param_3 = obj.startsWith(prefix)
+
+
+if __name__ == "__main__":
+    ops = ["Trie", "insert", "search", "search", "startsWith", "insert", "search"]
+    args = [[], ["apple"], ["apple"], ["app"], ["app"], ["app"], ["app"]]
+    expected = [None, None, True, False, True, None, True]
+
+    obj = None
+    for op, arg, exp in zip(ops, args, expected):
+        if op == "Trie":
+            obj = Trie()
+            result = None
+        else:
+            result = getattr(obj, op)(*arg)
+        status = "PASS" if result == exp else "FAIL"
+        print(f"{status}: {op}{tuple(arg)} -> {result} (expected {exp})")

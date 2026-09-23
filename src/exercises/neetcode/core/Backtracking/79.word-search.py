@@ -56,4 +56,18 @@ with a larger board?
 
 class Solution:
     def exist(self, board: list[list[str]], word: str) -> bool:
-        
+        pass
+
+
+if __name__ == "__main__":
+    sol = Solution()
+    board = [["A", "B", "C", "E"], ["S", "F", "C", "S"], ["A", "D", "E", "E"]]
+    tests = [
+        ((board, "ABCCED"), True),
+        ((board, "SEE"), True),
+        ((board, "ABCB"), False),
+    ]
+    for (args, expected) in tests:
+        result = sol.exist(*args)
+        status = "PASS" if result == expected else "FAIL"
+        print(f"{status}: exist(board, {args[1]!r}) -> {result} (expected {expected})")

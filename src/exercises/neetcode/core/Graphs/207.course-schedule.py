@@ -49,4 +49,16 @@ Constraints:
 
 class Solution:
     def canFinish(self, numCourses: int, prerequisites: list[list[int]]) -> bool:
-        
+        pass
+
+
+if __name__ == "__main__":
+    sol = Solution()
+    tests = [
+        ((2, [[1, 0]]), True),
+        ((2, [[1, 0], [0, 1]]), False),
+    ]
+    for (args, expected) in tests:
+        result = sol.canFinish(*args)
+        status = "PASS" if result == expected else "FAIL"
+        print(f"{status}: canFinish{args} -> {result} (expected {expected})")

@@ -79,15 +79,55 @@ Constraints:
 the given node.
 """
 
-"""
 # Definition for a Node.
 class Node:
-    def __init__(self, val = 0, neighbors = None):
+    def __init__(self, val=0, neighbors=None):
         self.val = val
         self.neighbors = neighbors if neighbors is not None else []
-"""
+
 
 from typing import Optional
 class Solution:
     def cloneGraph(self, node: Optional['Node']) -> Optional['Node']:
-        
+        pass
+
+
+def build_graph(adj_list):
+    """Builds a graph from LeetCode's adjacency-list format, returns the node with val=1 (or None)."""
+    if not adj_list:
+        return None
+    nodes = {i + 1: Node(i + 1) for i in range(len(adj_list))}
+    for i, neighbors in enumerate(adj_list):
+        nodes[i + 1].neighbors = [nodes[n] for n in neighbors]
+    return nodes[1]
+
+
+def graph_to_adj_list(node):
+    """Walks a graph via BFS and returns it in the same adjacency-list format, for comparison."""
+    if node is None:
+        return []
+    visited = {node.val: node}
+    queue = [node]
+    while queue:
+        current = queue.pop(0)
+        for neighbor in current.neighbors:
+            if neighbor.val not in visited:
+                visited[neighbor.val] = neighbor
+                queue.append(neighbor)
+    return [sorted(n.val for n in visited[v].neighbors) for v in sorted(visited)]
+
+
+if __name__ == "__main__":
+    sol = Solution()
+    tests = [
+        ([[2, 4], [1, 3], [2, 4], [1, 3]], [[2, 4], [1, 3], [2, 4], [1, 3]]),
+        ([[]], [[]]),
+        ([], []),
+    ]
+    for (adj_list, expected) in tests:
+        original = build_graph(adj_list)
+        cloned = sol.cloneGraph(original)
+        result = graph_to_adj_list(cloned)
+        is_actually_cloned = cloned is None or original is None or cloned is not original
+        status = "PASS" if result == expected and is_actually_cloned else "FAIL"
+        print(f"{status}: cloneGraph({adj_list}) -> {result} (expected {expected})")

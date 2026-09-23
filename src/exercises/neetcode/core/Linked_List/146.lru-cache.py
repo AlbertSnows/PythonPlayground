@@ -65,16 +65,32 @@ Constraints:
 class LRUCache:
 
     def __init__(self, capacity: int):
-        
+        pass
 
     def get(self, key: int) -> int:
-        
+        pass
 
     def put(self, key: int, value: int) -> None:
-        
+        pass
 
 
 # Your LRUCache object will be instantiated and called as such:
 # obj = LRUCache(capacity)
 # param_1 = obj.get(key)
 # obj.put(key,value)
+
+
+if __name__ == "__main__":
+    ops = ["LRUCache", "put", "put", "get", "put", "get", "put", "get", "get", "get"]
+    args = [[2], [1, 1], [2, 2], [1], [3, 3], [2], [4, 4], [1], [3], [4]]
+    expected = [None, None, None, 1, None, -1, None, -1, 3, 4]
+
+    obj = None
+    for op, arg, exp in zip(ops, args, expected):
+        if op == "LRUCache":
+            obj = LRUCache(*arg)
+            result = None
+        else:
+            result = getattr(obj, op)(*arg)
+        status = "PASS" if result == exp else "FAIL"
+        print(f"{status}: {op}{tuple(arg)} -> {result} (expected {exp})")

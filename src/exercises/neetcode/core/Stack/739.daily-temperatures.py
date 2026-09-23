@@ -39,4 +39,17 @@ Constraints:
 
 class Solution:
     def dailyTemperatures(self, temperatures: list[int]) -> list[int]:
-        
+        pass
+
+
+if __name__ == "__main__":
+    sol = Solution()
+    tests = [
+        (([73, 74, 75, 71, 69, 72, 76, 73],), [1, 1, 4, 2, 1, 1, 0, 0]),
+        (([30, 40, 50, 60],), [1, 1, 1, 0]),
+        (([30, 60, 90],), [1, 1, 0]),
+    ]
+    for (args, expected) in tests:
+        result = sol.dailyTemperatures(*args)
+        status = "PASS" if result == expected else "FAIL"
+        print(f"{status}: dailyTemperatures{args} -> {result} (expected {expected})")

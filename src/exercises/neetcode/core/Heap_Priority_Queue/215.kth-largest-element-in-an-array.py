@@ -36,4 +36,16 @@ Constraints:
 
 class Solution:
     def findKthLargest(self, nums: list[int], k: int) -> int:
-        
+        pass
+
+
+if __name__ == "__main__":
+    sol = Solution()
+    tests = [
+        (([3, 2, 1, 5, 6, 4], 2), 5),
+        (([3, 2, 3, 1, 2, 4, 5, 5, 6], 4), 4),
+    ]
+    for (args, expected) in tests:
+        result = sol.findKthLargest(*args)
+        status = "PASS" if result == expected else "FAIL"
+        print(f"{status}: findKthLargest{args} -> {result} (expected {expected})")

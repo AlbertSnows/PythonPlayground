@@ -42,4 +42,16 @@ Constraints:
 
 class Solution:
     def characterReplacement(self, s: str, k: int) -> int:
-        
+        pass
+
+
+if __name__ == "__main__":
+    sol = Solution()
+    tests = [
+        (("ABAB", 2), 4),
+        (("AABABBA", 1), 4),
+    ]
+    for (args, expected) in tests:
+        result = sol.characterReplacement(*args)
+        status = "PASS" if result == expected else "FAIL"
+        print(f"{status}: characterReplacement{args} -> {result} (expected {expected})")

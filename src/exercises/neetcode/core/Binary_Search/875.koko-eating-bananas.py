@@ -50,4 +50,17 @@ Constraints:
 
 class Solution:
     def minEatingSpeed(self, piles: list[int], h: int) -> int:
-        
+        pass
+
+
+if __name__ == "__main__":
+    sol = Solution()
+    tests = [
+        (([3, 6, 7, 11], 8), 4),
+        (([30, 11, 23, 4, 20], 5), 30),
+        (([30, 11, 23, 4, 20], 6), 23),
+    ]
+    for (args, expected) in tests:
+        result = sol.minEatingSpeed(*args)
+        status = "PASS" if result == expected else "FAIL"
+        print(f"{status}: minEatingSpeed{args} -> {result} (expected {expected})")

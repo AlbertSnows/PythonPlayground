@@ -44,10 +44,49 @@ have leading zeros.
 """
 
 # Definition for singly-linked list.
-# class ListNode:
-#     def __init__(self, val=0, next=None):
-#         self.val = val
-#         self.next = next
+class ListNode:
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
+
+
 class Solution:
     def addTwoNumbers(self, l1: ListNode | None, l2: ListNode | None) -> ListNode | None:
-        
+        pass
+
+
+def build_list(values):
+    head = None
+    tail = None
+    for v in values:
+        node = ListNode(v)
+        if head is None:
+            head = node
+        else:
+            tail.next = node
+        tail = node
+    return head
+
+
+def list_to_values(head):
+    values = []
+    while head:
+        values.append(head.val)
+        head = head.next
+    return values
+
+
+if __name__ == "__main__":
+    sol = Solution()
+    tests = [
+        (([2, 4, 3], [5, 6, 4]), [7, 0, 8]),
+        (([0], [0]), [0]),
+        (([9, 9, 9, 9, 9, 9, 9], [9, 9, 9, 9]), [8, 9, 9, 9, 0, 0, 0, 1]),
+    ]
+    for (args, expected) in tests:
+        l1 = build_list(args[0])
+        l2 = build_list(args[1])
+        result_head = sol.addTwoNumbers(l1, l2)
+        result = list_to_values(result_head)
+        status = "PASS" if result == expected else "FAIL"
+        print(f"{status}: addTwoNumbers{args} -> {result} (expected {expected})")

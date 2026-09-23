@@ -45,4 +45,17 @@ subtle.
 
 class Solution:
     def maxSubArray(self, nums: list[int]) -> int:
-        
+        pass
+
+
+if __name__ == "__main__":
+    sol = Solution()
+    tests = [
+        (([-2, 1, -3, 4, -1, 2, 1, -5, 4],), 6),
+        (([1],), 1),
+        (([5, 4, -1, 7, 8],), 23),
+    ]
+    for (args, expected) in tests:
+        result = sol.maxSubArray(*args)
+        status = "PASS" if result == expected else "FAIL"
+        print(f"{status}: maxSubArray{args} -> {result} (expected {expected})")

@@ -39,4 +39,16 @@ Constraints:
 
 class Solution:
     def canJump(self, nums: list[int]) -> bool:
-        
+        pass
+
+
+if __name__ == "__main__":
+    sol = Solution()
+    tests = [
+        (([2, 3, 1, 1, 4],), True),
+        (([3, 2, 1, 0, 4],), False),
+    ]
+    for (args, expected) in tests:
+        result = sol.canJump(*args)
+        status = "PASS" if result == expected else "FAIL"
+        print(f"{status}: canJump{args} -> {result} (expected {expected})")

@@ -52,4 +52,17 @@ Constraints:
 
 class Solution:
     def networkDelayTime(self, times: list[list[int]], n: int, k: int) -> int:
-        
+        pass
+
+
+if __name__ == "__main__":
+    sol = Solution()
+    tests = [
+        (([[2, 1, 1], [2, 3, 1], [3, 4, 1]], 4, 2), 2),
+        (([[1, 2, 1]], 2, 1), 1),
+        (([[1, 2, 1]], 2, 2), -1),
+    ]
+    for (args, expected) in tests:
+        result = sol.networkDelayTime(*args)
+        status = "PASS" if result == expected else "FAIL"
+        print(f"{status}: networkDelayTime{args} -> {result} (expected {expected})")

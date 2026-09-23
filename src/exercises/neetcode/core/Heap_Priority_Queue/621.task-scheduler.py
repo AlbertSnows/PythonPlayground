@@ -67,4 +67,17 @@ Constraints:
 
 class Solution:
     def leastInterval(self, tasks: list[str], n: int) -> int:
-        
+        pass
+
+
+if __name__ == "__main__":
+    sol = Solution()
+    tests = [
+        ((["A", "A", "A", "B", "B", "B"], 2), 8),
+        ((["A", "C", "A", "B", "D", "B"], 1), 6),
+        ((["A", "A", "A", "B", "B", "B"], 3), 10),
+    ]
+    for (args, expected) in tests:
+        result = sol.leastInterval(*args)
+        status = "PASS" if result == expected else "FAIL"
+        print(f"{status}: leastInterval{args} -> {result} (expected {expected})")

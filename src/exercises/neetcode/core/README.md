@@ -1,6 +1,6 @@
 # Core Pattern Concepts
 
-Quick reference for the problem-solving pattern behind each category in this folder. The goal isn't to memorize solutions — it's to recognize which pattern a new problem belongs to, then apply the general shape.
+Quick reference for the problem-solving pattern behind each category in this folder. 
 
 ## 1-D Dynamic Programming
 

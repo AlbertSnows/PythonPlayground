@@ -38,4 +38,17 @@ Constraints:
 
 class Solution:
     def reverse(self, x: int) -> int:
-        
+        pass
+
+
+if __name__ == "__main__":
+    sol = Solution()
+    tests = [
+        ((123,), 321),
+        ((-123,), -321),
+        ((120,), 21),
+    ]
+    for (args, expected) in tests:
+        result = sol.reverse(*args)
+        status = "PASS" if result == expected else "FAIL"
+        print(f"{status}: reverse{args} -> {result} (expected {expected})")

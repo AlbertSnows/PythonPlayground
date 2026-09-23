@@ -29,4 +29,16 @@ Constraints:
 
 class Solution:
     def getSum(self, a: int, b: int) -> int:
-        
+        pass
+
+
+if __name__ == "__main__":
+    sol = Solution()
+    tests = [
+        ((1, 2), 3),
+        ((2, 3), 5),
+    ]
+    for (args, expected) in tests:
+        result = sol.getSum(*args)
+        status = "PASS" if result == expected else "FAIL"
+        print(f"{status}: getSum{args} -> {result} (expected {expected})")

@@ -43,4 +43,17 @@ Constraints:
 
 class Solution:
     def merge(self, intervals: list[list[int]]) -> list[list[int]]:
-        
+        pass
+
+
+if __name__ == "__main__":
+    sol = Solution()
+    tests = [
+        (([[1, 3], [2, 6], [8, 10], [15, 18]],), [[1, 6], [8, 10], [15, 18]]),
+        (([[1, 4], [4, 5]],), [[1, 5]]),
+        (([[4, 7], [1, 4]],), [[1, 7]]),
+    ]
+    for (args, expected) in tests:
+        result = sol.merge(*args)
+        status = "PASS" if result == expected else "FAIL"
+        print(f"{status}: merge{args} -> {result} (expected {expected})")

@@ -59,19 +59,19 @@ non-empty stacks.
 class MinStack:
 
     def __init__(self):
-        
+        pass
 
     def push(self, value: int) -> None:
-        
+        pass
 
     def pop(self) -> None:
-        
+        pass
 
     def top(self) -> int:
-        
+        pass
 
     def getMin(self) -> int:
-        
+        pass
 
 
 # Your MinStack object will be instantiated and called as such:
@@ -80,3 +80,19 @@ class MinStack:
 # obj.pop()
 # param_3 = obj.top()
 # param_4 = obj.getMin()
+
+
+if __name__ == "__main__":
+    ops = ["MinStack", "push", "push", "push", "getMin", "pop", "top", "getMin"]
+    args = [[], [-2], [0], [-3], [], [], [], []]
+    expected = [None, None, None, None, -3, None, 0, -2]
+
+    obj = None
+    for op, arg, exp in zip(ops, args, expected):
+        if op == "MinStack":
+            obj = MinStack()
+            result = None
+        else:
+            result = getattr(obj, op)(*arg)
+        status = "PASS" if result == exp else "FAIL"
+        print(f"{status}: {op}{tuple(arg)} -> {result} (expected {exp})")

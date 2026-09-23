@@ -50,4 +50,17 @@ Constraints:
 
 class Solution:
     def longestCommonSubsequence(self, text1: str, text2: str) -> int:
-        
+        pass
+
+
+if __name__ == "__main__":
+    sol = Solution()
+    tests = [
+        (("abcde", "ace"), 3),
+        (("abc", "abc"), 3),
+        (("abc", "def"), 0),
+    ]
+    for (args, expected) in tests:
+        result = sol.longestCommonSubsequence(*args)
+        status = "PASS" if result == expected else "FAIL"
+        print(f"{status}: longestCommonSubsequence{args} -> {result} (expected {expected})")

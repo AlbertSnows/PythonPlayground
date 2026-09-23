@@ -40,13 +40,50 @@ Constraints:
 """
 
 # Definition for singly-linked list.
-# class ListNode:
-#     def __init__(self, val=0, next=None):
-#         self.val = val
-#         self.next = next
+class ListNode:
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
+
+
 class Solution:
     def reorderList(self, head: ListNode | None) -> None:
         """
         Do not return anything, modify head in-place instead.
         """
-        
+        pass
+
+
+def build_list(values):
+    head = None
+    tail = None
+    for v in values:
+        node = ListNode(v)
+        if head is None:
+            head = node
+        else:
+            tail.next = node
+        tail = node
+    return head
+
+
+def list_to_values(head):
+    values = []
+    while head:
+        values.append(head.val)
+        head = head.next
+    return values
+
+
+if __name__ == "__main__":
+    sol = Solution()
+    tests = [
+        ([1, 2, 3, 4], [1, 4, 2, 3]),
+        ([1, 2, 3, 4, 5], [1, 5, 2, 4, 3]),
+    ]
+    for (values, expected) in tests:
+        head = build_list(values)
+        sol.reorderList(head)
+        result = list_to_values(head)
+        status = "PASS" if result == expected else "FAIL"
+        print(f"{status}: reorderList({values}) -> {result} (expected {expected})")

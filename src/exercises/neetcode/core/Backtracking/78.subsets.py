@@ -36,4 +36,20 @@ Constraints:
 
 class Solution:
     def subsets(self, nums: list[int]) -> list[list[int]]:
-        
+        pass
+
+
+if __name__ == "__main__":
+    # Order of subsets, and order within each subset, doesn't matter.
+    def normalize(groups):
+        return sorted(tuple(sorted(g)) for g in groups)
+
+    sol = Solution()
+    tests = [
+        (([1, 2, 3],), [[], [1], [2], [1, 2], [3], [1, 3], [2, 3], [1, 2, 3]]),
+        (([0],), [[], [0]]),
+    ]
+    for (args, expected) in tests:
+        result = sol.subsets(*args)
+        status = "PASS" if normalize(result) == normalize(expected) else "FAIL"
+        print(f"{status}: subsets{args} -> {result} (expected {expected})")

@@ -54,4 +54,17 @@ Constraints:
 
 class Solution:
     def search(self, nums: list[int], target: int) -> int:
-        
+        pass
+
+
+if __name__ == "__main__":
+    sol = Solution()
+    tests = [
+        (([4, 5, 6, 7, 0, 1, 2], 0), 4),
+        (([4, 5, 6, 7, 0, 1, 2], 3), -1),
+        (([1], 0), -1),
+    ]
+    for (args, expected) in tests:
+        result = sol.search(*args)
+        status = "PASS" if result == expected else "FAIL"
+        print(f"{status}: search{args} -> {result} (expected {expected})")

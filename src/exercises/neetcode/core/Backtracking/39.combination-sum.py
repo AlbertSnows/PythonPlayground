@@ -55,4 +55,21 @@ Constraints:
 
 class Solution:
     def combinationSum(self, candidates: list[int], target: int) -> list[list[int]]:
-        
+        pass
+
+
+if __name__ == "__main__":
+    # Order of combinations, and order within each combination, doesn't matter.
+    def normalize(groups):
+        return sorted(tuple(sorted(g)) for g in groups)
+
+    sol = Solution()
+    tests = [
+        (([2, 3, 6, 7], 7), [[2, 2, 3], [7]]),
+        (([2, 3, 5], 8), [[2, 2, 2, 2], [2, 3, 3], [3, 5]]),
+        (([2], 1), []),
+    ]
+    for (args, expected) in tests:
+        result = sol.combinationSum(*args)
+        status = "PASS" if normalize(result) == normalize(expected) else "FAIL"
+        print(f"{status}: combinationSum{args} -> {result} (expected {expected})")

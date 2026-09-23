@@ -42,4 +42,17 @@ Constraints:
 
 class Solution:
     def lengthOfLongestSubstring(self, s: str) -> int:
-        
+        pass
+
+
+if __name__ == "__main__":
+    sol = Solution()
+    tests = [
+        (("abcabcbb",), 3),
+        (("bbbbb",), 1),
+        (("pwwkew",), 3),
+    ]
+    for (args, expected) in tests:
+        result = sol.lengthOfLongestSubstring(*args)
+        status = "PASS" if result == expected else "FAIL"
+        print(f"{status}: lengthOfLongestSubstring{args} -> {result} (expected {expected})")

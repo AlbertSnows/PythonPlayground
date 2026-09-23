@@ -49,4 +49,28 @@ Constraints:
 
 class Solution:
     def numIslands(self, grid: List[List[str]]) -> int:
-        
+        pass
+
+
+if __name__ == "__main__":
+    grid1 = [
+        ["1", "1", "1", "1", "0"],
+        ["1", "1", "0", "1", "0"],
+        ["1", "1", "0", "0", "0"],
+        ["0", "0", "0", "0", "0"],
+    ]
+    grid2 = [
+        ["1", "1", "0", "0", "0"],
+        ["1", "1", "0", "0", "0"],
+        ["0", "0", "1", "0", "0"],
+        ["0", "0", "0", "1", "1"],
+    ]
+    sol = Solution()
+    tests = [
+        ((grid1,), 1),
+        ((grid2,), 3),
+    ]
+    for (args, expected) in tests:
+        result = sol.numIslands(*args)
+        status = "PASS" if result == expected else "FAIL"
+        print(f"{status}: numIslands(grid) -> {result} (expected {expected})")

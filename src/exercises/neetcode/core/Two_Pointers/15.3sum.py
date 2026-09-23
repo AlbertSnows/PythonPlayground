@@ -48,4 +48,21 @@ Constraints:
 
 class Solution:
     def threeSum(self, nums: list[int]) -> list[list[int]]:
-        
+        pass
+
+
+if __name__ == "__main__":
+    # Order of triplets, and order within each triplet, doesn't matter.
+    def normalize(groups):
+        return sorted(tuple(sorted(g)) for g in groups)
+
+    sol = Solution()
+    tests = [
+        (([-1, 0, 1, 2, -1, -4],), [[-1, -1, 2], [-1, 0, 1]]),
+        (([0, 1, 1],), []),
+        (([0, 0, 0],), [[0, 0, 0]]),
+    ]
+    for (args, expected) in tests:
+        result = sol.threeSum(*args)
+        status = "PASS" if normalize(result) == normalize(expected) else "FAIL"
+        print(f"{status}: threeSum{args} -> {result} (expected {expected})")

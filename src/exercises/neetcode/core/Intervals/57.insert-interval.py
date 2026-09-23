@@ -57,4 +57,16 @@ Constraints:
 
 class Solution:
     def insert(self, intervals: list[list[int]], newInterval: list[int]) -> list[list[int]]:
-        
+        pass
+
+
+if __name__ == "__main__":
+    sol = Solution()
+    tests = [
+        (([[1, 3], [6, 9]], [2, 5]), [[1, 5], [6, 9]]),
+        (([[1, 2], [3, 5], [6, 7], [8, 10], [12, 16]], [4, 8]), [[1, 2], [3, 10], [12, 16]]),
+    ]
+    for (args, expected) in tests:
+        result = sol.insert(*args)
+        status = "PASS" if result == expected else "FAIL"
+        print(f"{status}: insert{args} -> {result} (expected {expected})")

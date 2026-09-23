@@ -44,4 +44,16 @@ Constraints:
 
 class Solution:
     def maxArea(self, height: list[int]) -> int:
-        
+        pass
+
+
+if __name__ == "__main__":
+    sol = Solution()
+    tests = [
+        (([1, 8, 6, 2, 5, 4, 8, 3, 7],), 49),
+        (([1, 1],), 1),
+    ]
+    for (args, expected) in tests:
+        result = sol.maxArea(*args)
+        status = "PASS" if result == expected else "FAIL"
+        print(f"{status}: maxArea{args} -> {result} (expected {expected})")

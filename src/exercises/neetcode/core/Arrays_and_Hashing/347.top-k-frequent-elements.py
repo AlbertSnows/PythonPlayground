@@ -48,4 +48,18 @@ log n), where n is the array's size.
 
 class Solution:
     def topKFrequent(self, nums: list[int], k: int) -> list[int]:
-        
+        pass
+
+
+if __name__ == "__main__":
+    # Order doesn't matter, so we compare as sets.
+    sol = Solution()
+    tests = [
+        (([1, 1, 1, 2, 2, 3], 2), {1, 2}),
+        (([1], 1), {1}),
+        (([1, 2, 1, 2, 1, 2, 3, 1, 3, 2], 2), {1, 2}),
+    ]
+    for (args, expected) in tests:
+        result = sol.topKFrequent(*args)
+        status = "PASS" if set(result) == expected else "FAIL"
+        print(f"{status}: topKFrequent{args} -> {result} (expected set {expected})")

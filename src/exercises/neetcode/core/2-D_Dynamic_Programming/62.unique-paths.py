@@ -42,4 +42,16 @@ Constraints:
 
 class Solution:
     def uniquePaths(self, m: int, n: int) -> int:
-        
+        pass
+
+
+if __name__ == "__main__":
+    sol = Solution()
+    tests = [
+        ((3, 7), 28),
+        ((3, 2), 3),
+    ]
+    for (args, expected) in tests:
+        result = sol.uniquePaths(*args)
+        status = "PASS" if result == expected else "FAIL"
+        print(f"{status}: uniquePaths{args} -> {result} (expected {expected})")

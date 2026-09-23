@@ -46,4 +46,17 @@ Constraints:
 
 class Solution:
     def coinChange(self, coins: list[int], amount: int) -> int:
-        
+        pass
+
+
+if __name__ == "__main__":
+    sol = Solution()
+    tests = [
+        (([1, 2, 5], 11), 3),
+        (([2], 3), -1),
+        (([1], 0), 0),
+    ]
+    for (args, expected) in tests:
+        result = sol.coinChange(*args)
+        status = "PASS" if result == expected else "FAIL"
+        print(f"{status}: coinChange{args} -> {result} (expected {expected})")

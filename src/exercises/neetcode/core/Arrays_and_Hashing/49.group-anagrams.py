@@ -51,4 +51,21 @@ Constraints:
 
 class Solution:
     def groupAnagrams(self, strs: list[str]) -> list[list[str]]:
-        
+        pass
+
+
+if __name__ == "__main__":
+    # Order of groups, and order within each group, doesn't matter.
+    def normalize(groups):
+        return sorted(tuple(sorted(g)) for g in groups)
+
+    sol = Solution()
+    tests = [
+        ((["eat", "tea", "tan", "ate", "nat", "bat"],), [["bat"], ["nat", "tan"], ["ate", "eat", "tea"]]),
+        (([""],), [[""]]),
+        ((["a"],), [["a"]]),
+    ]
+    for (args, expected) in tests:
+        result = sol.groupAnagrams(*args)
+        status = "PASS" if normalize(result) == normalize(expected) else "FAIL"
+        print(f"{status}: groupAnagrams{args} -> {result} (expected {expected})")
