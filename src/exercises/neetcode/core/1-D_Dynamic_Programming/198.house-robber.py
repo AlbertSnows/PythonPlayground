@@ -52,15 +52,15 @@ class Solution:
         # 2, 2, 10, 14, 13
         start = 2
         max_value_at_index = [nums[0], max(nums[0], nums[1])]
-        for index in range(start, len(nums) - 1):
+        for index in range(start, len(nums)):
             value_at_index = nums[index]
             previous_max_location = index - 2
             previous_max = max_value_at_index[previous_max_location]
             new_possible_max = previous_max + value_at_index
-            max_value_at_index[index] = new_possible_max
+            max_value_at_index.append(new_possible_max)
 
-        end = len(nums) - 1
-        return max_value_at_index[end]
+        end = len(max_value_at_index) - 1
+        return max(max_value_at_index[end], max_value_at_index[end - 1])
         
 if __name__ == "__main__":
     sol = Solution()
