@@ -51,7 +51,33 @@ Constraints:
 
 class Solution:
     def groupAnagrams(self, strs: list[str]) -> list[list[str]]:
-        pass
+        # Example 1:
+
+        # Input: strs = ["eat","tea","tan","ate","nat","bat"]
+
+        # Output: [["bat"],["nat","tan"],["ate","eat","tea"]]
+
+        # Explanation:
+
+        # 	• There is no string in strs that can be rearranged to form "bat".
+
+        # • The strings "nat" and "tan" are anagrams as they can be rearranged
+        # to form each other.
+
+        # • The strings "ate", "eat", and "tea" are anagrams as they can be
+        # rearranged to form each other.
+
+        sorted_to_matchers: dict[str, set[str]] = {}
+        for curr_str in strs:
+            local_str = "".join(sorted(curr_str))
+            if local_str in sorted_to_matchers:
+                sorted_to_matchers[local_str].add(curr_str)
+            else:
+                sorted_to_matchers[local_str] = {curr_str}
+        paired_groups = []
+        for matched_strs in sorted_to_matchers.values():
+            paired_groups.append(list(matched_strs))
+        return paired_groups
 
 
 if __name__ == "__main__":

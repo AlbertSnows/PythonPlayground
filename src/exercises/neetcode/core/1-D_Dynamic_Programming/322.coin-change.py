@@ -46,8 +46,25 @@ Constraints:
 
 class Solution:
     def coinChange(self, coins: list[int], amount: int) -> int:
-        pass
-
+        # Input: coins = [1,2,5], amount = 11
+        # Output: 3
+        # Explanation: 11 = 5 + 5 + 1
+        # 11 % 5 = 2
+        # 11 - 10 -> 11 - 5 -> 11 - 0
+        if len(coins) == 0:
+            return -1;
+        for largest_possible_coin_index in reversed(range(len(coins))):
+            # 5
+            coin_amount = coins[largest_possible_coin_index]
+            remainder = amount % coin_amount
+            if remainder == 0:
+                return int(amount / coin_amount)
+            for coins_to_remove in reversed(range(remainder + 1)):
+                remaining = amount - (coins_to_remove * coin_amount)
+                outcome = self.coinChange(coins[:largest_possible_coin_index], remaining)
+                if outcome != -1:
+                    return outcome
+        return -1
 
 if __name__ == "__main__":
     sol = Solution()
