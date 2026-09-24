@@ -51,7 +51,66 @@ class TreeNode:
 
 class Solution:
     def isValidBST(self, root: TreeNode | None) -> bool:
-        pass
+        # Given the root of a binary tree, determine if it is a valid binary
+        # search tree (BST).
+
+        # A valid BST is defined as follows:
+
+        # • The left subtree of a node contains only nodes with keys strictly
+        # less than the node's key.
+
+        # • The right subtree of a node contains only nodes with keys strictly
+        # greater than the node's key.
+
+        # 	• Both the left and right subtrees must also be binary search trees.
+
+        # Input: root = [2,1,3]
+        # Output: true
+        left_leaf = root.left == None
+        right_leaf = root.right == None
+        if left_leaf and right_leaf:
+            return True
+        if left_leaf: 
+            # right side nedes to be larger
+            right_max = get_max_for_branch(root.right)
+            is_valid = root.val < right_max
+            return is_valid
+        elif right_leaf:
+            # left side nedes to be smaller
+            left_max = get_max_for_branch(root.left)
+            is_valid = root.val > left_max
+            return is_valid
+        else:
+            right_max = get_min_for_branch(root.right)
+            left_max = get_max_for_branch(root.left)
+            right_valid = root.val < right_max
+            left_valid = root.val > left_max
+            return right_valid and left_valid
+ 
+def get_max_for_branch(root: TreeNode): 
+    left_leaf = root.left == None
+    right_leaf = root.right == None
+    if left_leaf and right_leaf:
+        return root.val
+    elif left_leaf:
+        return max(root.val, get_max_for_branch(root.right))
+    elif right_leaf:
+        return max(root.val, get_max_for_branch(root.left))
+    else:
+        return max(root.val, get_max_for_branch(root.left), get_max_for_branch(root.right))
+
+def get_min_for_branch(root: TreeNode): 
+    left_leaf = root.left == None
+    right_leaf = root.right == None
+    if left_leaf and right_leaf:
+        return root.val
+    elif left_leaf:
+        return min(root.val, get_max_for_branch(root.right))
+    elif right_leaf:
+        return min(root.val, get_max_for_branch(root.left))
+    else:
+        return min(root.val, get_max_for_branch(root.left), get_max_for_branch(root.right))
+
 
 
 def build_tree(values):

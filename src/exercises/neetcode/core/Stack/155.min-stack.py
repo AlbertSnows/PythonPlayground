@@ -57,22 +57,33 @@ non-empty stacks.
 """
 
 class MinStack:
+    min_val: int
+    stack: list[int]
 
     def __init__(self):
-        pass
+        self.stack = []
+        self.min_val = None
 
     def push(self, value: int) -> None:
-        pass
+        self.stack.append(value)
+        if self.min_val == None:
+            self.min_val = value
+        else:
+            self.min_val = min(self.min_val, value)
 
     def pop(self) -> None:
-        pass
+        if len(self.stack) == 1:
+            self.min_val = None
+            self.stack.pop()
+        else:
+            self.stack.pop()            
+            self.min_val = min(self.stack)
 
     def top(self) -> int:
-        pass
+        return self.stack[len(self.stack) - 1]
 
     def getMin(self) -> int:
-        pass
-
+        return self.min_val
 
 # Your MinStack object will be instantiated and called as such:
 # obj = MinStack()

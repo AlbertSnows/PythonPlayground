@@ -42,7 +42,35 @@ Constraints:
 
 class Solution:
     def lengthOfLongestSubstring(self, s: str) -> int:
-        pass
+        # Given a string s, find the length of the longest substring without
+        # duplicate characters.
+
+        # Input: s = "abcabcbb"
+        # Output: 3
+        # Explanation: The answer is "abc", with the length of 3. Note that
+        # "bca" and "cab" are also correct answers.
+        left = 0
+        right = 1
+        longest_substring = 1
+        end = len(s) - 1
+        current_letters: set[str] = set()
+        current_letters.add(s[0])
+        current_substring = 1
+        while right <= end:
+            right_letter = s[right]
+            already_seen = right_letter in current_letters
+            if already_seen:
+                current_letters.remove(s[left])
+                current_substring -= 1
+                left += 1
+            else: 
+                current_letters.add(right_letter)
+                current_substring += 1
+                longest_substring = max(longest_substring, current_substring)
+                right += 1
+
+        
+        return longest_substring
 
 
 if __name__ == "__main__":
